@@ -1,5 +1,5 @@
 #FIX THE LINE BELOW
-class xyz : #<-----Replace xyz-make a new class, MyStr, that inherits from str
+class MyStr(str) : #<-----Replace xyz-make a new class, MyStr, that inherits from str
     """
     Build a subclass of str with some new, fun methods.
     """
@@ -30,7 +30,7 @@ class xyz : #<-----Replace xyz-make a new class, MyStr, that inherits from str
 
         :returns: a new string with replacement complete
         """
-        #################
+        #################       
         #Make this method work in the way described in
         #the block comment above.
         #Hints:
@@ -42,4 +42,13 @@ class xyz : #<-----Replace xyz-make a new class, MyStr, that inherits from str
         #       do this in as little as 1 line.
         #YOUR CODE BELOW:
         #################
-        
+        ret = self
+        beg = 0
+        while True:
+            try:
+                idx = ret.lower().index(take_out.lower(), beg)
+            except ValueError:
+                break
+            ret = ret[:idx] + use_this + ret[idx+len(take_out):]
+            beg = idx+len(use_this)
+        return ret
